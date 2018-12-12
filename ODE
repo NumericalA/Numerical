@@ -8,6 +8,7 @@ w=Symbol("y")
 F=parse_expr(s)
 
 
+
 #  variables to be read S-> striing of equation 
 #  x0,y0 initial condition
 #  xf ->  x to stop at it , n-> number of interval slices
