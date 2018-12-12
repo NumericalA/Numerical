@@ -1,0 +1,9 @@
+Number of Inputs (5):
+- Number of points 
+- X's of each point
+- Y's of each point
+- Value of X you want the Derivative at
+- Number of Decimal places you want the answer to be
+
+Number of Outputs (1):
+- The result F'(X) (The Derivative at X )
