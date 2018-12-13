@@ -6,7 +6,7 @@ x = []
 y = []
 
 
-def newtonGeneral(workingList, workingListInv, value):
+def newtonGeneral(workingList, workingListInv, value, order, ApproxError = 1e-8):
     # sort the array with respect to the minimum difference
     newWorkingList = []
     newWorkingListInv = []
@@ -41,16 +41,51 @@ def newtonGeneral(workingList, workingListInv, value):
                 for k in range(len(dividedDifferenceTable[i - 1]) - 1)
             ])
 
-    polynomialSum = newWorkingListInv[0]
-    for i in range(2, len(dividedDifferenceTable)):
-        polynomialSum += (dividedDifferenceTable[i][0]) * np.prod(
-            np.array([value - newWorkingList[k] for k in range(0, i - 1)])
-        )
+    error = 0
+    done = False
+    lastterm = -1
+    derivative = 0
+    for i in range(order):
+        dividedDifferenceVal = dividedDifferenceTable[i+2][0]
+        sum = 0
+        for j in range(i+1):
+            Diff = 1
+            for k in range(i+1):
+                if k != j:
+                    Diff *= value - dividedDifferenceTable[0][k]
+            sum += Diff
+        derivative += sum * dividedDifferenceVal
 
-    return polynomialSum
+        if lastterm != -1:
+            appErr = abs(derivative - lastterm)/derivative
+            appErr = abs(appErr)
+            if appErr < ApproxError:
+                error = appErr
+                done = True
+                break
+        lastterm = derivative
+
+    if (order < len(x) - 1) and (not done):
+        dividedDifferenceVal = dividedDifferenceTable[order+2][0]
+        sum = 0
+        for j in range(order+1):
+            Diff = 1
+            for k in range(order+1):
+                if k != j:
+                    Diff *= value - dividedDifferenceTable[0][k]
+            sum += Diff
+        error += sum * dividedDifferenceVal
+
+# --------------------Outputs-------------------------
+    derivative = "{:.{n}f}".format(derivative, n=5)
+    print("F`({0}) = {1}".format("x", derivative))
+    error = "{:.{n}f}".format(error, n=5)
+    error = abs(float(error))
+    print("Error = {0} ".format(error))
+# ----------------------------------------------------
 
 
-def differentiate(value, p, isX):
+def differentiate(value, isX, order, AppErr):
     global x, y
     if isX:
         workingList = x.copy()
@@ -63,21 +98,13 @@ def differentiate(value, p, isX):
         notation = "y"
         notationInv = "x"
 
-    h = 0.00000001
-
-    # Second Formula for Central Difference O(h^4)
-    derivative = (8*newtonGeneral(workingList, workingListInv, value + h) -
-                  newtonGeneral(workingList, workingListInv, value + 2*h) -
-                  8*newtonGeneral(workingList, workingListInv, value - h) +
-                  newtonGeneral(workingList, workingListInv, value - 2*h)) / (12 * h)
-
-    # Final answer
-    derivative = "{:.{n}f}".format(derivative, n = p)
-    print("F`({0}) = {1}".format(notation, derivative))
+    newtonGeneral(workingList, workingListInv, value, order, AppErr)
 
 
 def execute():
 
+#---------Inputs----------------------------------
+'''
     n = input("Enter number of points : ")
     print("Enter X's : ")
     for i in range(int(n)):
@@ -92,10 +119,20 @@ def execute():
     print("Enter Value of X you want Derivative at : ")
     value = input("Getting F`(x) at x = ")
 
-    print("Enter number of decimal places")
-    per = input()
+    # Order of Approx. (number of terms used)
+    print("Enter Order of Approximation ")
+    order = input()
 
-    differentiate(float(value), int(per), True)
+    # Order of Approx. (number of terms used)
+    print("Approximation Error for Stopping Criteria ")
+    Apperr = input()
+'''
+#--------------------------------------------------------------------
+
+    if order >= n:
+        raise ValueError("Order should be < number of points")
+
+    differentiate(float(value), True, int(order), float(Apperr))
 
 
 def main():
