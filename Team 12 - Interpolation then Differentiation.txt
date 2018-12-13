@@ -1,9 +1,11 @@
-Number of Inputs (5):
+Number of Inputs (6):
 - Number of points 
 - X's of each point
 - Y's of each point
 - Value of X you want the Derivative at
-- Number of Decimal places you want the answer to be
+- Order of Approximation : Number of terms used in Approximation (Stopping Criteria)
+- Approx.Error : Stop when error is less than Approx.Error(Stopping Criteria)
 
-Number of Outputs (1):
-- The result F'(X) (The Derivative at X )
+Number of Outputs (2):
+- The result F'(X) (The Derivative at X)
+- Approximation Error of the Derivative
