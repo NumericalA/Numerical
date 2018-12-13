@@ -5,7 +5,7 @@
 #Omar Wagih	    2	    10	    o.wagih.ow@gmail.com
 #Walid Ashraf 	2	    29	    WalidAshraf423@gmail.com
 
-#Inputs are array of functions of y', z', w' and they must be in this order, array of initial values x,y,z,w, step size, error in percentage, number of iterations 
+#Inputs are array of functions of y', z', w' and they must be in this order, array of initial values x,y,z,w, step size, error in percentage, heunOrRunge (for heun pass 1, anything else is runge), number of iterations 
 #which are by default 5.
 
 
