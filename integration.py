@@ -4,4 +4,7 @@
   a => start of integration interval,
   b => end of integration interval,
   n => number of sample points
+  output: (I, E)
+  I: Integral value,
+  E: error estimate.
 '''
