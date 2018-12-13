@@ -1,7 +1,6 @@
-Number of Inputs (6):
-- Number of points 
-- X's of each point
-- Y's of each point
+Number of Inputs (5):
+- X's of each point (X list)
+- Y's of each point (Y list)
 - Value of X you want the Derivative at
 - Order of Approximation : Number of terms used in Approximation (Stopping Criteria)
 - Approx.Error : Stop when error is less than Approx.Error(Stopping Criteria)
