@@ -1,4 +1,4 @@
-Number of Inputs (5):
+Number of Inputs (5) :
 - X's of each point (X list)
 - Y's of each point (Y list)
 - Value of X you want the Derivative at
