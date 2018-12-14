@@ -5,44 +5,18 @@
 #Omar Wagih	    2	    10	    o.wagih.ow@gmail.com
 #Walid Ashraf 	2	    29	    WalidAshraf423@gmail.com
 
-#Number of inputs 11
-#Inputs 1 to 3
-#array of functions of y', z', w' and they must be in this order
-#Inputs 4 to 7
-#array of initial values x,y,z,w
-#Input 8
-#step size
-#Input 9
-#error in percentage
-#Input 10
-#heunOrRunge (for heun pass 1, anything else is runge)
-#Input 11
-#number of iterations, which are by default 5.
-
-#Number of outputs 2
-#Output 1
-#graph
-#Output 2
-#answer at last step
-
-
-# coding: utf-8
-
-# In[1]:
-
+# Inputs are string array of functions of y', z', w' and they must be in this order, array of initial values x,y,z,w, step size, error in percentage,
+# heunOrRunge (for heun pass 1, anything else is runge), number of iterations which are by default 5.
+# Output is a array of numbers at the last step, and a matplotlib graph
 
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 from sympy.parsing.sympy_parser import (parse_expr,standard_transformations, implicit_multiplication_application)
 from sympy import *
 
 
-# In[45]:
-
-
-
-
-
-# In[110]:
+# In[49]:
 
 
 def solveSystemsHeun(Equations,initialArrays,h,error, numOfIterations = 5):
@@ -51,6 +25,7 @@ def solveSystemsHeun(Equations,initialArrays,h,error, numOfIterations = 5):
         Functions.append(parse_expr(Equations[i],transformations=(standard_transformations +(implicit_multiplication_application,))))
     NextArrays = initialArrays 
     DummyArray = NextArrays
+    AllOutputs = []
     c = initialArrays[0]
     numA = 0
     x = Symbol("x")
@@ -76,6 +51,7 @@ def solveSystemsHeun(Equations,initialArrays,h,error, numOfIterations = 5):
         while len(NextArrays) < 4:
             NextArrays.append(0)
         c = round(c+h,4)
+        AllOutputs.append(NextArrays)
         fals = True
         for i in range(1,len(NextArrays)):
             if NextArrays[i] != 0:
@@ -83,9 +59,10 @@ def solveSystemsHeun(Equations,initialArrays,h,error, numOfIterations = 5):
                     fals = False
         if fals == True:
             break;
-    return NextArrays;
+    return np.array(AllOutputs);
 def solveSystems(Equations,initialArrays, h, error, numOfIterations = 5):
     Functions = []
+    AllOutputs = []
     for i in range(len(Equations)):
         Functions.append(parse_expr(Equations[i],transformations=(standard_transformations +(implicit_multiplication_application,))))
     NextArrays = initialArrays 
@@ -133,26 +110,35 @@ def solveSystems(Equations,initialArrays, h, error, numOfIterations = 5):
         NextArrays[0] += h
         fals = True
         NextArrays = np.round(NextArrays,4)
+        AllOutputs.append(NextArrays)
         for i in range(1,len(NextArrays)):
             if NextArrays[i] != 0:
                 if abs(NextArrays[i]-DummyArray[i])/NextArrays[i] * 100 > error:
                     fals = False
         if fals == True:
-            return NextArrays;
-    return NextArrays;
+            break;
+    return np.array(AllOutputs);
 
 
-# In[114]:
+# In[56]:
 
 
 def SolveODE(Equations,InitialValues,h,error,HeunOrRunge,numOfIterations=5):
     Initial = len(InitialValues)
+    Answer = []
+    colors = ['mo','ro','go']
     while len(InitialValues) < 4:
         InitialValues.append(0)
     if HeunOrRunge == 1:
-        return solveSystemsHeun(Equations,InitialValues,h,error,numOfIterations)[0:Initial]
+        Answer = solveSystemsHeun(Equations,InitialValues,h,error,numOfIterations)[:,0:Initial]
     else:
-        return solveSystems(Equations,InitialValues,h,error,numOfIterations)[0:Initial]
-print(SolveODE(["z","6+y-5*x*z"],[1,1,-1],0.2,0.001,1,1))
-print(SolveODE(["z","6+y-5*x*z"],[1,1,-1],0.2,0.001,2,1))
-
+        Answer = solveSystems(Equations,InitialValues,h,error,numOfIterations)[:,0:Initial]
+    for i in Answer:
+        for j in range(1,len(i)):
+            plt.plot(i[0], i[j],colors[j-1])
+    plt.xlabel('X')
+    redPatch = mpatches.Patch(color='red', label='Z values')
+    magentaPatch = mpatches.Patch(color='magenta', label='Y values')
+    greenPatch = mpatches.Patch(color='green', label='W values')
+    plt.legend(handles=[magentaPatch,redPatch,greenPatch][0:Initial-1])
+    return Answer[-1]
