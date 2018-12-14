@@ -1,14 +1,27 @@
 '''
 Gauss Seidel :
-Ax = b
-4 inputs  : matrix of coffecients, b vector , initial vector, espilon(stopping criteria)
-2 outputs :
-solution(vector) , approximate error.
+
+Number of Inputs (4) : 
+- (Ax = b) A matrix of coffecients,
+- b vector ,
+- initial vector, 
+- espilon(stopping criteria)
+
+Number of outputs (2) :
+- solution(vector) ,
+- approximate error.
 
 SOR :
-5 inputs  : matrix of coffecients, b vector , initial vector, omega ,espilon(stopping criteria)
-2 outputs :
-solution(vector) , approximate error.
+Number of Inputs(5)  : 
+- A matrix of coffecients, 
+- b vector , 
+- initial vector, 
+- omega ,
+- espilon(stopping criteria)
+
+Number of outputs (2) :
+- solution(vector) ,
+- approximate error.
 '''
 
 import numpy as np
