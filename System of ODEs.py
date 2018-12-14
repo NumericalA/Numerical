@@ -5,13 +5,25 @@
 #Omar Wagih	    2	    10	    o.wagih.ow@gmail.com
 #Walid Ashraf 	2	    29	    WalidAshraf423@gmail.com
 
-#Inputs are array of functions of y', z', w' and they must be in this order, array of initial values x,y,z,w, step size, error in percentage, heunOrRunge (for heun pass 1, anything else is runge), number of iterations 
-#which are by default 5.
+#Number of inputs 11
+#Inputs 1 to 3
+#array of functions of y', z', w' and they must be in this order
+#Inputs 4 to 7
+#array of initial values x,y,z,w
+#Input 8
+#step size
+#Input 9
+#error in percentage
+#Input 10
+#heunOrRunge (for heun pass 1, anything else is runge)
+#Input 11
+#number of iterations, which are by default 5.
 
-
-
-
-
+#Number of outputs 2
+#Output 1
+#graph
+#Output 2
+#answer at last step
 
 
 # coding: utf-8
