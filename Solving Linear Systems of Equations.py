@@ -1,8 +1,15 @@
+'''
+Gauss Seidel :
+Ax = b
+4 inputs  : matrix of coffecients, b vector , initial vector, espilon(stopping criteria)
+2 outputs :
+solution(vector) , approximate error.
 
-# coding: utf-8
-
-# In[55]:
-
+SOR :
+5 inputs  : matrix of coffecients, b vector , initial vector, omega ,espilon(stopping criteria)
+2 outputs :
+solution(vector) , approximate error.
+'''
 
 import numpy as np
 
