@@ -2,7 +2,7 @@ import numpy as np
 
 def interpolateNewton(x,y,order=5,x0 = None, appError = 1e-8,numDigits = 4):
     """
-    inputs:
+    6 inputs: 2 lists necessary and 4 has default:
     list (or numpy array) :x :the input x values for all points
     list (or numpy array) :y :the input y values for all points (length of y should equal length of x)
     integer :order :number of itertations before the stoping (by default 5) 
@@ -10,7 +10,7 @@ def interpolateNewton(x,y,order=5,x0 = None, appError = 1e-8,numDigits = 4):
     float :appError :approximate error to stop evaluating (by default 10^(-8))
     integer :numDigits :number of digits after floating point (by default 4) 
 
-    outputs:
+    3 outputs:
     string :sout :the function writen in string (e.g 0.2x + 0.4(x-1) * (x-2) ... )
     if given x0:
         float :sumOut :the value of the function at x0
@@ -72,13 +72,13 @@ def interpolateNewton(x,y,order=5,x0 = None, appError = 1e-8,numDigits = 4):
 
 def interpolationLagrange(x,y,x0 = None,numDigits = 4):
     """
-    inputs:
+    4 inputs: 2 lists necessary and 2 has default:
     list (or numpy array) :x :the input x values for all points
     list (or numpy array) :y :the input y values for all points (length of y should equal length of x)
     float :x0 :the required x to get the value of the function (by default None)
     integer :numDigits :number of digits after floating point (by default 4) 
 
-    outputs:
+    2 outputs:
     string :sout :the function writen in string (e.g 0.2x + 0.4(x-1) * (x-2) ... )
     if given x0:
         float :sumOut :the value of the function at x0
