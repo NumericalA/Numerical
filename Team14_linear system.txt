@@ -1,0 +1,8 @@
+inputs:
+      -matrix 3x4 (AX=b)
+      -initial vector
+      -approx error (stopping criteria)
+     
+outputs: 
+      -approx error
+      -output vector
