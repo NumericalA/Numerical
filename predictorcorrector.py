@@ -7,17 +7,12 @@ Created on Fri Dec  7 19:46:24 2018
 
 # input up till now is 
 #1-list of x points (
-#adams bashforth: yd5al mn 2 points l 5 points
-#adams moulton: mn 3 points 
+#adams bashforth: min: 2 points max: 5 points
+#adams moulton: 3 points 
 #adams: 4 points
 #milines: 4 points
 #)
-#2-list of y points (
-#adams bashforth: yd5al mn 2 points l 5 points
-#adams moulton: mn 3 points 
-#adams: 4 points
-#milines: 4 points
-#)
+#2-list of y points
 #3-equation of the ode (string)
 #4-The desired technique as a string {"Milne's","AdamsBashforth","AdamsMoulton","Adams"}
 #5-list of x points to caluculate at 
