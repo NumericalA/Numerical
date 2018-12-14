@@ -140,9 +140,9 @@ def AdamsBashforth(xpointsold,ypointsold,equation,xs,error):
             xpoints.pop(0)
             ypoints.pop(0)
             f.pop(0)
-            f.append(GetF(xs[l],yCorrect,equation))
-        else: 
-            f[len(xpoints)-1]=(GetF(xs[l],yCorrect,equation))
+            f.append(0)
+
+        f[len(xpoints)-1]=(GetF(xs[l],yCorrect,equation))
         points.append(Point(xs[l],yCorrect,tempF))
         evalYs.append(yCorrect)
         approxErrors.append((abs((yCorrect-yPrevious)/yCorrect*1.0))*100.0)
