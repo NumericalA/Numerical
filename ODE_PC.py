@@ -82,13 +82,15 @@ def Milnes (xpoints,ypoints,equation,evalxs,approxerror):
 
 
 #assume x after the last point in table ##Error
-def AdamsBashforth(xpoints,ypoints,equation,xs,error):
+def AdamsBashforth(xpointsold,ypointsold,equation,xs,error):
     points=[] #contains all given points
     f=[] #all calculated f(x,y)
     y0 = 0
     yCorrect = 0
     yPredict = 0
     iterations = 5
+    xpoints = xpointsold.copy()
+    ypoints = ypointsold.copy()
     #result
     evalYs=[] 
     approxErrors=[]
@@ -141,6 +143,7 @@ def AdamsBashforth(xpoints,ypoints,equation,xs,error):
             f.append(GetF(xs[l],yCorrect,equation))
         else: 
             f[len(xpoints)-1]=(GetF(xs[l],yCorrect,equation))
+        points.append(Point(xs[l],yCorrect,tempF))
         evalYs.append(yCorrect)
         approxErrors.append((abs((yCorrect-yPrevious)/yCorrect*1.0))*100.0)
     return evalYs,approxErrors,max(approxErrors)
