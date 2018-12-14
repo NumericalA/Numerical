@@ -1,3 +1,17 @@
+
+'''
+5 inputs: 3 necessary , 2 optional
+	X : the value to calculate the derivative at.
+	table : contain 2 rows, the first for x values , and the second for y values
+	errorOrder: the order of h (stopping criteria)
+	f(optional): a string to contain the function, (default value "" , if she will insert a table not the function)
+	h(optional): insert the max h if she will insert a function string (f), (not needed for table)
+
+1 output:
+	string = "error", if not valid data inserted
+	or float value contains the answer
+'''
+
 # answer is bool, if it false x will contain an error string , else if true x will contain the final answer
 #answer , x=Rich(X = 1.6, table = [[0.8,1,1.2,1.4,1.6,1.8,2,2.2,2.4] , [1.3,1.7,2.3,3.2,4.7,6.2,8.1,9.2,9.8]],errorOrder = 6)
 #answer , x= Rich(X = 0, table = [],errorOrder=16,f = "1/(1+x)",h = 0.1)
