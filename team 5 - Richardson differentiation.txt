@@ -1,9 +1,0 @@
-inputs:-
-	X : the value to calculate the derivative at.
-	table : contain 2 rows, the first for x values , and the second for y values
-	errorOrder: the order of h (stopping criteria)
-	f(optional): a string to contain the function, (default value "" , if she will insert a table not the function)
-	h(optional): insert the max h if she will insert a function string (f), (not needed for table)
-output:-
-	string = "error", if not valid data inserted
-	or float value contains the answer
