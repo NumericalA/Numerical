@@ -130,7 +130,12 @@ def deflate(A, initial=None, epsilon=None, numberOfIterations=100, minEigen=Fals
     #get largest eigen value for A
     eigenValue, eigenVector, error = powerMethod(A, initial, epsilon, numberOfIterations, minEigen)
 
-    eigenVectorNormalized = eigenVector/np.linalg.norm(eigenVector)
+    norm = np.linalg.norm(eigenVector)
+
+    if(norm != 0):
+        eigenVectorNormalized = eigenVector/norm
+    else:
+        eigenVectorNormalized = eigenVector
 
     if minEigen:
         try:
