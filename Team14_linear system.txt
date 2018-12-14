@@ -2,9 +2,9 @@ Gauss Seidel :
 Ax = b
 input  : matrix of coffecients, b vector , initial vector, espilon(stopping criteria)
 output :
-solution , approximate error.
+solution(vector) , approximate error.
 
 SOR :
 input  : matrix of coffecients, b vector , initial vector, omega ,espilon(stopping criteria)
 output :
-solution , approximate error.
+solution(vector) , approximate error.
