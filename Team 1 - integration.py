@@ -38,7 +38,7 @@ def get_function():
 # f: either a table (with f[i] = f(x_i), the x_i are n samples between a, b) or a function.
 # a: start of interval.
 # b: end of interval.
-# n: no. of samples points.
+# n: no. of intervals
 def trapezoidal(f, a, b, n):
     h = (b - a) / n
     x, fx = get_table(f, a, b, n)
@@ -53,7 +53,7 @@ def trapezoidal(f, a, b, n):
 # f: either a table (with f[i] = f(x_i), the x_i are n samples between a, b) or a function.
 # a: start of interval.
 # b: end of interval.
-# n: no. of samples points.
+# n: no. of intervals
 def simpson_3_8(f, a, b, n=3):
     if n != 3:
         raise ValueError("Can only apply Sympson's 3/8 rule to n=3.")
@@ -90,7 +90,7 @@ def simpson1_3_error2(y, a, b, h):
 # f: either a table (with f[i] = f(x_i), the x_i are n samples between a, b) or a function.
 # a: start of interval.
 # b: end of interval.
-# n: no. of samples points.
+# n: no. of intervals
 def simpson_1_3(f, a, b, n):
     h = (b - a) / n
     x, table = get_table(f, a, b, n)
