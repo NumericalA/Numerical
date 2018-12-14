@@ -9,43 +9,45 @@ Created on Fri Dec  7 19:46:24 2018
 #1-list of x points (4 points)
 #2-list of y points (4 points)
 #3-equation of the ode (string)
-#4-The desired technique as a string
-#5-The point to caluculate at 
+#4-The desired technique as a string {"Milne's","AdamsBashforth","AdamsMoulton","Adams"}
+#5-list of x points to caluculate at 
 #6-Approx Error with default 1 so we just do 5 itterations if not given
 
 #output
-#1-y
-#2-ApproxError
+#1-list of calculated ys
+#2-list of Approx Error for each y
+#3-Final approx error 
 from milnes import Milnes 
 from adams import Adams
 from adamsmoulton import AdamsMoulton
 
-def PredictorCorrector(Xpoints,Ypoints,equation,x,technique,ApproxError=1):
-    output=0
-    error=0
+def PredictorCorrector(Xpoints,Ypoints,equation,technique,xs,ApproxError=1):
+    ys=[]
+    errors=[]
+    finalerror=0
     if technique=="Milne's":
-        output=Milnes(Xpoints,Ypoints,equation,x,ApproxError) 
+        ys,errors,finalerror=Milnes(Xpoints,Ypoints,equation,xs,ApproxError) 
     elif technique=="AdamsBashforth":
-        output=2
+        ys=[]
     elif technique=="AdamsMoulton":
-        output , error =AdamsMoulton(Xpoints,Ypoints,equation,x,ApproxError)
+        ys , errors =AdamsMoulton(Xpoints,Ypoints,equation,xs,ApproxError)
     elif technique=="Adams":
-        output, error = Adams(Xpoints,Ypoints,equation,x,ApproxError)
-    return output ,error
+        ys, errors = Adams(Xpoints,Ypoints,equation,xs,ApproxError)
+    return ys ,errors,finalerror
 
         
-
-
 xs=[-3,-2,-1,0]
 ys=[-4.547302,-2.30616,-0.3929953,2]
-x=1
-itt=5
+x=[1,2,3,4]
 eq="4*exp(0.8*x) -0.5*y"
-eq2="x*y+x**2"
+#xs=[-0.1,0,0.1,0.2]
+#ys=[1.0047,1,1.0053,1.0229]
+#x=0.3
+#eq="x*y+x**2"
 approx=0.0005
-out ,error =PredictorCorrector(xs,ys,eq,x,"Milne's",approx)
-print (" Milne's      ",out,error)
-out ,error =PredictorCorrector(xs,ys,eq,x,"Adams",approx)
-print (" Adams        ",out,error)
-out ,error =PredictorCorrector(xs,ys,eq,x,"AdamsMoulton",approx)
-print (" AdamsMoulton ",out,error)
+out ,errors,error =PredictorCorrector(xs,ys,eq,"Milne's",x,approx)
+print (" Milne's      ",out,errors,error)
+#out ,error =PredictorCorrector(xs,ys,eq,"Adams",x,approx)
+#print (" Adams        ",out,error)
+#out ,error =PredictorCorrector(xs,ys,eq,"AdamsMoulton",x,approx)
+#print (" AdamsMoulton ",out,error)
