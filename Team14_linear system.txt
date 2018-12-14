@@ -1,8 +1,10 @@
-inputs:
-      -matrix 3x4 (AX=b)
-      -initial vector
-      -approx error (stopping criteria)
-     
-outputs: 
-      -approx error
-      -output vector
+Gauss Seidel :
+Ax = b
+input  : matrix of coffecients, b vector , initial vector, espilon(stopping criteria)
+output :
+solution , approximate error.
+
+SOR :
+input  : matrix of coffecients, b vector , initial vector, omega ,espilon(stopping criteria)
+output :
+solution , approximate error.
