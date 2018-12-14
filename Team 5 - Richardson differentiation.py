@@ -7,8 +7,9 @@
 	f(optional): a string to contain the function, (default value "" , if she will insert a table not the function)
 	h(optional): insert the max h if she will insert a function string (f), (not needed for table)
 
-1 output:
-	string = "error", if not valid data inserted
+2 outputs: can ignore first output by _ , output = Rich( pla pla pla)
+	- bool answer = true if there is no error, false if has error
+	- string = "error", if not valid data inserted
 	or float value contains the answer
 '''
 
