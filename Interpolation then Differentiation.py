@@ -115,33 +115,15 @@ def differentiate(value, isX, order, AppErr):
 
 def execute():
 
-#---------Inputs----------------------------------
-'''
-    n = input("Enter number of points : ")
-    print("Enter X's : ")
-    for i in range(int(n)):
-        val = input()
-        x.append(float(val))
-    print("Enter Y's : ")
-    for i in range(int(n)):
-        val = input()
-        y.append(float(val))
-
-    # Value of x to find Derivative at
-    print("Enter Value of X you want Derivative at : ")
-    value = input("Getting F`(x) at x = ")
-
-    # Order of Approx. (number of terms used)
-    print("Enter Order of Approximation ")
-    order = input()
-
-    # Order of Approx. (number of terms used)
-    print("Approximation Error for Stopping Criteria ")
-    Apperr = input()
-'''
-#--------------------------------------------------------------------
-
-    if order >= n:
+    '''
+       x[]
+       y[]
+       order = input()   Number of terms
+       Apperr = input()  Approximation error
+       value = input()   Fid Derivative at this value   
+    '''
+    
+    if order >= len(y):
         raise ValueError("Order should be < number of points")
 
     differentiate(float(value), True, int(order), float(Apperr))
