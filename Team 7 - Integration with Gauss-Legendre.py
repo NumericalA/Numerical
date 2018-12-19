@@ -7,6 +7,13 @@
 * no. of outputs: 1 [Value of Integration]
 '''
 
+'''
+Team members:
+1- Omar Mohammed Mohammed 
+2- Walid Mohammed
+3- Yahia Ali
+'''
+
 from math import *
 
 def solve(symF, polyorder, a, b, flag = 0):
@@ -47,7 +54,7 @@ def Integration_GaussLegendre(f, n, a, b):
         elif b == 1e9:
             ans = solve(f, n, 0, 1, flag = 1) + solve(f, n, 1, 0, flag = 1)
         else:
-            ans = solve(f, n, 0, 1/a, flag = 1)
+            ans = solve(f, n, 0, 1/b, flag = 1)
     elif a == 0:
         if b == 1e9:
             ans = solve(f, n, 0, 1) + solve(f, n, 1, 0, flag = 1)
